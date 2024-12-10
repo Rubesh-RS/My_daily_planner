@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Plan</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <form id="planForm">
+        <h1>Complete Today's Plan</h1>
+        {% for section, lines in sections.items() %}
+        <h2>{{ section.replace('_', ' ').title() }}</h2>
+        {% for line in lines %}
+        <div>
+            <input type="checkbox" class="task-checkbox" value="{{ line }}"> {{ line }}
+        </div>
+        {% endfor %}
+        {% endfor %}
+        <div id="stars">
+            <span>&#9734;</span>
+            <span>&#9734;</span>
+            <span>&#9734;</span>
+            <span>&#9734;</span>
+            <span>&#9734;</span>
+        </div>        
+        <button type="button" id="submitBtn">Submit</button>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('.task-checkbox');
+            const stars = document.querySelectorAll('#stars span');
+            const totalItems = parseInt("{{ total_items | default(1) }}", 10); // Parse total items safely
+            let completedItems = 0;
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    completedItems = [...checkboxes].filter(cb => cb.checked).length;
+                    const starValue = Math.min(5, Math.round((completedItems / totalItems) * 5));
+                    stars.forEach((star, index) => {
+                        star.innerHTML = index < starValue ? '&#9733;' : '&#9734;';
+                    });
+                });
+            });
+
+            document.getElementById('submitBtn').addEventListener('click', () => {
+                const checkedItems = [...checkboxes].filter(cb => cb.checked).map(cb => cb.value);
+                fetch('/complete-plan', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ checked_items: checkedItems }),
+                })
+                .then(res => res.json())
+                .then(data => {
+                    alert(`You earned ${data.stars} stars today!`);
+                    window.location.href = '/report';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
