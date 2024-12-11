@@ -10,7 +10,23 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    animation: fadeIn 3s ease-in-out;
+    animation: fadeIn 2s ease-in-out;
+    background-size: 100% auto; /* Makes the width fit perfectly, scales height automatically */
+    background-position: top center; /* Centers and aligns the image */
+}
+
+body1 {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background: linear-gradient(to right, #ff7e5f, #feb47b); */
+    background-image: url('/static/backiee.jpg');
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    animation: fadeIn 2s ease-in-out;
     background-size: 100% auto; /* Makes the width fit perfectly, scales height automatically */
     background-position: top center; /* Centers and aligns the image */
 }
@@ -29,7 +45,38 @@ h1 {
     text-align: center;
     margin-bottom: 20px;
     color: #ffffff;
+    animation: neonGlow 1s infinite alternate;
+}
+
+label {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #050505;
     animation: neonGlow 6s infinite alternate;
+}
+
+h2   {
+    color: #050505;
+    animation: neonGlow 6s infinite alternate;
+    max-width: 400px;
+    width: 100%;
+    font-size: 18px;
+}
+
+span  {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #050505;
+    animation: neonGlow1 0.5s infinite alternate;
+}
+
+@keyframes neonGlow1 {
+    0% {
+        text-shadow: 0 0 5px gold, 0 0 10px gold, 0 0 20px gold, 0 0 40px gold, 0 0 80px gold, 0 0 90px gold, 0 0 100px gold;
+    }
+    100% {
+        text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 50px gold, 0 0 80px gold, 0 0 100px gold, 0 0 150px gold;
+    }
 }
 
 @keyframes neonGlow {
@@ -61,10 +108,29 @@ button:hover {
     background-color: #ff3e3e;
 }
 
+button1 {
+    display: inline-block;
+    background-color: #ff6f61;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+button1:hover {
+    transform: scale(1.1);
+    background-color: #ff3e3e;
+}
+
 /* Forms */
 form {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
+    background: rgba(255, 167, 240, 0.9);
+    padding: 10px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     max-width: 400px;
@@ -72,11 +138,11 @@ form {
 }
 
 textarea {
-    width: 100%;
+    width: 95%;
     height: 80px;
     margin: 10px 0;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #f8a6ea;
     border-radius: 6px;
     resize: none;
 }

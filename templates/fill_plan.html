@@ -9,15 +9,15 @@
 <body>
     <form method="POST">
         <h1>Plan for {{ date }}</h1>
-        <label>*Top Priorities</label>
+        <label>Top Priorities</label>
         <textarea name="top_priorities" placeholder="Top Priorities">{{ plan.top_priorities if plan }}</textarea>
-        <label>*Calls/Mails</label>
+        <label>Calls/Mails</label>
         <textarea name="calls_mails" placeholder="Calls/Mails">{{ plan.calls_mails if plan }}</textarea>
-        <label>*Personal Tasks</label>
+        <label>Personal Tasks</label>
         <textarea name="personal_tasks" placeholder="Personal Tasks">{{ plan.personal_tasks if plan }}</textarea>
-        <label>*To Do List</label>
+        <label>To Do List</label>
         <textarea name="todo_list" placeholder="To Do List">{{ plan.todo_list if plan }}</textarea>
-        <label>*Daily Habits</label>
+        <label>Daily Habits</label>
         <textarea name="daily_habits" placeholder="Daily Habits">{{ plan.daily_habits if plan }}</textarea>
         <button type="submit">Save Plan</button>
     </form>
