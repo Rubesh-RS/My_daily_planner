@@ -3,13 +3,16 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    /* background: linear-gradient(to right, #ff7e5f, #feb47b); */
+    background-image: url('/static/landscape.jpg');
     color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeIn 3s ease-in-out;
+    background-size: 100% auto; /* Makes the width fit perfectly, scales height automatically */
+    background-position: top center; /* Centers and aligns the image */
 }
 
 /* Animation */
@@ -25,7 +28,17 @@ body {
 h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #fff;
+    color: #ffffff;
+    animation: neonGlow 6s infinite alternate;
+}
+
+@keyframes neonGlow {
+    0% {
+        text-shadow: 0 0 5px #ff00bf, 0 0 10px #ff00bf, 0 0 20px #ff00bf, 0 0 40px #ff00bf, 0 0 80px #ff00bf, 0 0 90px #ff00bf, 0 0 100px #ff00bf;
+    }
+    100% {
+        text-shadow: 0 0 10px #ff00bf, 0 0 20px #ff00bf, 0 0 30px #ff00bf, 0 0 50px #ff00bf, 0 0 80px #ff00bf, 0 0 100px #ff00bf, 0 0 150px #ff00bf;
+    }
 }
 
 /* Buttons */
